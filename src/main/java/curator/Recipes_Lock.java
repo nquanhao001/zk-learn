@@ -25,7 +25,6 @@ public class Recipes_Lock {
                 retryPolicy(new ExponentialBackoffRetry(1000, 3)).
                 build();
         client.start();
-
         final InterProcessMutex lock = new InterProcessMutex(client, lock_path);
         final CountDownLatch countDownLatch = new CountDownLatch(1);
         for (int i = 0; i < 30; i++) {
